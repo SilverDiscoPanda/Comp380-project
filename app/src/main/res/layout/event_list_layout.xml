@@ -8,11 +8,11 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="264dp"
+        android:layout_width="123dp"
+        android:layout_height="67dp"
         android:layout_marginEnd="148dp"
         android:layout_marginRight="148dp"
+        android:layout_marginTop="264dp"
         android:text="hkhj"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

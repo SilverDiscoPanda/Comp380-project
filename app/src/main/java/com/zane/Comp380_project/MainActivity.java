@@ -6,10 +6,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.CalendarView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     private  static final String TAG = "CalendarActivity";
-    //  private TextView theDate;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,13 +28,17 @@ public class MainActivity extends AppCompatActivity {
 
 
                 String date = (month + 1) + "/" + dayOfMonth + "/" + year;
+
                 Log.d(TAG, "onSelectedDayChange: yyyy/mm/dd:" + date);
 
                 //Goes to Main2Activity
                 Intent event = new Intent(MainActivity.this, Main2Activity.class);
                 event.putExtra("date",date);
 
+
                 startActivity(event);
+
+
 
 
             }

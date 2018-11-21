@@ -8,12 +8,14 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
+import android.widget.TextView;
 import android.widget.TimePicker;
 
 import java.util.Calendar;
 
 public class DatePickActivity extends AppCompatActivity {
 
+    private TextView sDate;
     private DatePicker.OnDateChangedListener sDateSetListener;
 
 
@@ -51,10 +53,21 @@ public class DatePickActivity extends AppCompatActivity {
     sDateSetListener = new DatePicker.OnDateChangedListener() {
 
 
+        //initiate a date picker
+        DatePicker simpleDatePicker = (DatePicker) findViewById(R.id.simpleDatePicker);
+
+      //  simpleDatePicker.setSpinnersShown(false);//false to not show date spinner
+        int month = simpleDatePicker.getMonth();
+        int year = simpleDatePicker.getYear();
+        int day = simpleDatePicker.getDayOfMonth();
+
+
         @Override
-        public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-            Log.d("Date", "Year=" + year + " Month=" + (month + 1) + " day=" + dayOfMonth);
-            String startDate = "";
+        public void onDateChanged(DatePicker view, int year, int month, int day) {
+            Log.d("Date", "Year=" + year + " Month=" + (month + 1) + " day=" + day);
+            String startDate =  month +  "/"+ day+ "/" + year;
+            sDate.setText(startDate);
+
 
         }
 

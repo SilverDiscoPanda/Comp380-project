@@ -10,7 +10,13 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
 
+import java.util.Calendar;
+
 public class DatePickActivity extends AppCompatActivity {
+
+    private DatePicker.OnDateChangedListener sDateSetListener;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,13 +24,17 @@ public class DatePickActivity extends AppCompatActivity {
         setContentView(R.layout.activity_date_pick);
 
 
-
+/*
         //initiate a date picker
         DatePicker simpleDatePicker = (DatePicker) findViewById(R.id.simpleDatePicker);
       //  simpleDatePicker.setSpinnersShown(false);//false to not show date spinner
         int month = simpleDatePicker.getMonth();
         int year = simpleDatePicker.getYear();
         int day = simpleDatePicker.getDayOfMonth();
+*/
+
+
+
 
         TimePicker simpleTimePicker = (TimePicker) findViewById(R.id.simpleTimePicker); // initiate a time picker
         simpleTimePicker.setIs24HourView(false);//false for 12 hr clock
@@ -38,8 +48,50 @@ public class DatePickActivity extends AppCompatActivity {
         int minutes = simpleTimePicker.getMinute(); // after api level 23
 
 
+    sDateSetListener = new DatePicker.OnDateChangedListener() {
+
+
+        @Override
+        public void onDateChanged(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+            Log.d("Date", "Year=" + year + " Month=" + (month + 1) + " day=" + dayOfMonth);
+            String startDate = "";
+
+        }
+
+    };
 
 /*
+public void setDate(){
+
+            DatePicker simpleDatePicker = (DatePicker) findViewById(R.id.simpleDatePicker);
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTimeInMillis(System.currentTimeMillis());
+            simpleDatePicker.init(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), new DatePicker.OnDateChangedListener() {
+
+                @Override
+                public void onDateChanged(DatePicker datePicker, int year, int month, int dayOfMonth) {
+                    Log.d("Date", "Year=" + year + " Month=" + (month + 1) + " day=" + dayOfMonth);
+
+                    String startDate = "";
+
+                }
+            });
+
+
+        }
+
+*/
+
+/*
+
+
+
+
+
+
+
+
+
         mDisplayDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

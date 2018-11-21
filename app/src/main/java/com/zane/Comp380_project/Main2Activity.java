@@ -22,13 +22,12 @@ import android.widget.Button;
 public class Main2Activity extends AppCompatActivity {
 
     private static final String TAG = "Main2Activity";
+    private TextView theDate;
+    private Button startDatebutton;
+//private TextView mDisplayDate;
 
-//    private TextView mDisplayDate;
-    private DatePickerDialog.OnDateSetListener startDateSetListener;
-    private DatePickerDialog.OnDateSetListener endDateSetListener;
-
-    //FragmentManager fragmentManager = getSupportFragmentManager();
-    //FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+  //  FragmentManager fragmentManager = getSupportFragmentManager();
+    // FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,10 +40,23 @@ public class Main2Activity extends AppCompatActivity {
         String date = getevent.getStringExtra("date");
 
         TextView theDate = (TextView) findViewById(R.id.date);
+        startDatebutton = (Button) findViewById(R.id.startDatebutton);
         theDate.setText(date);
-        Toast.makeText(getApplicationContext(), "Hello user " + date, Toast.LENGTH_SHORT).show(); //popup
+        Toast.makeText(getApplicationContext(), "Hello user " + date, Toast.LENGTH_SHORT).show();//popup
 
 
+        startDatebutton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Code here executes on main thread after user presses button
+                Intent startDateEvent = new Intent(Main2Activity.this,DatePickActivity.class);
+                startActivity(startDateEvent);
+
+
+            }
+        });
+
+
+/*
         TimePicker simpleTimePicker = (TimePicker) findViewById(R.id.simpleTimePicker); // initiate a time picker
         simpleTimePicker.setIs24HourView(false);//false for 12 hr clock
         // set the value for current hours
@@ -56,27 +68,66 @@ public class Main2Activity extends AppCompatActivity {
         //get minutes
         int minutes = simpleTimePicker.getMinute(); // after api level 23
 
+        DatePicker simpleDatePicker = (DatePicker) findViewById(R.id.simpleDatePicker);
+        simpleDatePicker.setSpinnersShown(false);//false to not show date spinner
+        int month = simpleDatePicker.getMonth();
+        int year = simpleDatePicker.getYear();
+        int day = simpleDatePicker.getDayOfMonth();
+
+
+
 
         final Button button = findViewById(R.id.button3);
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Code here executes on main thread after user presses button
-
-                //initiate a date picker
-                DatePicker simpleDatePicker = (DatePicker) findViewById(R.id.simpleDatePicker);
-                simpleDatePicker.setSpinnersShown(false);//false to not show date spinner
-                int month = simpleDatePicker.getMonth();
-                int year = simpleDatePicker.getYear(); // get the selected year
-                int day = simpleDatePicker.getFirstDayOfWeek();
-
-
-            }
-        });
-
-
+*/
 
 
 /*
+
+
+  startDatebutton.setOnClickListener(new View.OnClickListener() {
+        public void onClick(View v) {
+            // Code here executes on main thread after user presses button
+  Intent startDateEvent = new Intent(Main2Activity.this,DatePickActivity.class);
+            startActivity(startDateEvent);
+
+
+        }
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  button.setOnClickListener(new View.OnClickListener() {
+        public void onClick(View v) {
+            // Code here executes on main thread after user presses button
+
+            //initiate a date picker
+            DatePicker simpleDatePicker = (DatePicker) findViewById(R.id.simpleDatePicker);
+            simpleDatePicker.setSpinnersShown(false);//false to not show date spinner
+            int month = simpleDatePicker.getMonth();
+            int year = simpleDatePicker.getYear();
+            int day = simpleDatePicker.getDayOfMonth();
+
+
+
+        }
+    });
+
+
+
+
+
+
         mDisplayDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -109,6 +160,7 @@ public class Main2Activity extends AppCompatActivity {
 */
 
     }
+
 
 
 }

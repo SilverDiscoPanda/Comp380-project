@@ -8,6 +8,9 @@ import android.widget.CalendarView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+
 public class MainActivity extends AppCompatActivity {
     private  static final String TAG = "CalendarActivity";
 
@@ -18,6 +21,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         CalendarView calendarView = findViewById(R.id.calendarView);
 
+
+        Calendar c = Calendar.getInstance();
+        int day = c.get(Calendar.DAY_OF_MONTH);
+        int month = c.get(Calendar.MONTH);
+        int year = c.get(Calendar.YEAR);
 
 
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
@@ -34,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
                 //Goes to Main2Activity
                 Intent event = new Intent(MainActivity.this, Main2Activity.class);
                 event.putExtra("date",date);
+
+
 
 
                 startActivity(event);

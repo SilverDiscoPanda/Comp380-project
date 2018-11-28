@@ -4,39 +4,66 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.zane.Comp380_project.DatePickActivity">
+    tools:context="com.zane.Comp380_project.DatePickActivity"
+    tools:layout_editor_absoluteY="25dp">
 
 
     <DatePicker
         android:id="@+id/simpleDatePicker"
-        android:layout_width="318dp"
-        android:layout_height="288dp"
-        android:datePickerMode="spinner"
+        android:layout_width="348dp"
+        android:layout_height="386dp"
         android:gravity="center_horizontal"
-        android:scaleX="1.25"
-        android:scaleY="0.90"
-        android:spinnersShown="false"
-        app:layout_constraintBottom_toTopOf="@+id/simpleTimePicker"
+        android:scaleX="1.0"
+        android:scaleY=".9"
+        app:layout_constraintBottom_toTopOf="@+id/sDateDisplay"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 
+
+    <TextView
+        android:id="@+id/sDateDisplay"
+        android:layout_width="wrap_content"
+        android:layout_height="18dp"
+        android:layout_marginBottom="10dp"
+        android:paddingEnd="4dip"
+        android:paddingStart="4dip"
+        android:text="START DATE"
+        app:layout_constraintBottom_toTopOf="@+id/simpleTimePicker"
+        app:layout_constraintEnd_toEndOf="@+id/simpleDatePicker"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="@+id/simpleDatePicker"
+        app:layout_constraintTop_toBottomOf="@+id/simpleDatePicker" />
+
     <TimePicker
         android:id="@+id/simpleTimePicker"
         android:layout_width="0dp"
-        android:layout_height="155dp"
+        android:layout_height="102dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="53dp"
+        android:layout_marginBottom="15dp"
         android:padding="10dp"
         android:timePickerMode="spinner"
+        app:layout_constraintBottom_toTopOf="@+id/sTimeDisplay"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sDateDisplay" />
+
+
+    <TextView
+        android:id="@+id/sTimeDisplay"
+        android:layout_width="wrap_content"
+        android:layout_height="16dp"
+        android:layout_marginBottom="7dp"
+        android:paddingEnd="4dip"
+        android:paddingStart="4dip"
+        android:text="START TIME"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/simpleDatePicker"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/simpleTimePicker" />
+
+
 
 
 </android.support.constraint.ConstraintLayout>

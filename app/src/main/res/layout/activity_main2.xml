@@ -27,15 +27,13 @@
     <TextView
         android:id="@+id/date"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="55dp"
-        android:layout_marginEnd="2dp"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="67dp"
+        android:layout_height="69dp"
+        android:layout_marginBottom="126dp"
+        android:layout_marginEnd="4dp"
         android:textColor="#000000"
         android:textSize="50sp"
         android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/startDatebutton"
+        app:layout_constraintBottom_toTopOf="@+id/editText"
         app:layout_constraintEnd_toEndOf="@+id/startDatebutton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -44,34 +42,38 @@
     <EditText
         android:id="@+id/editText"
         android:layout_width="342dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="239dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="277dp"
         android:ems="10"
         android:gravity="center_horizontal"
         android:inputType="textMultiLine"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/startDatebutton" />
+        app:layout_constraintTop_toBottomOf="@+id/date" />
 
     <Button
         android:id="@+id/startDatebutton"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="381dp"
         android:gravity="center_horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/editText"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/editText"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/date" />
+        app:layout_constraintTop_toBottomOf="@+id/tvDate" />
 
 
     <TextView
+        android:id="@+id/tvDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/tvDate"
-        android:layout_marginTop="50dp"
         android:layout_centerHorizontal="true"
-        android:textSize="30sp"/>
+        android:layout_marginBottom="94dp"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/startDatebutton"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </android.support.constraint.ConstraintLayout>

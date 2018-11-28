@@ -1,6 +1,7 @@
 package com.zane.Comp380_project;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
@@ -11,13 +12,19 @@ import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import java.sql.Time;
+import java.time.Clock;
 import java.util.Calendar;
 
 public class DatePickActivity extends AppCompatActivity {
 
     private TextView sDate;
+    private TextView sTime;
+    private String Clockformat = "";
+    private int sYear;
+    private int sMonth;
+    private int sDay;
     private DatePicker.OnDateChangedListener sDateSetListener;
-
 
 
     @Override
@@ -25,117 +32,83 @@ public class DatePickActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_date_pick);
 
-
-/*
         //initiate a date picker
         DatePicker simpleDatePicker = (DatePicker) findViewById(R.id.simpleDatePicker);
-      //  simpleDatePicker.setSpinnersShown(false);//false to not show date spinner
-        int month = simpleDatePicker.getMonth();
-        int year = simpleDatePicker.getYear();
-        int day = simpleDatePicker.getDayOfMonth();
-*/
+        sDate = (TextView) findViewById(R.id.sDateDisplay);
+
+        sDateDisplay();
 
 
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        simpleDatePicker.init(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), new DatePicker.OnDateChangedListener() {
+            public void onDateChanged(DatePicker view, int year, int month, int dayOfMonth) {
+                Log.d("Date", "Year=" + year + " Month=" + (month + 1) + " day=" + dayOfMonth);
+                sYear = year;
+                sMonth = month;
+                sDay = dayOfMonth;
+                sDateDisplay();
+            }
+        });
 
 
         TimePicker simpleTimePicker = (TimePicker) findViewById(R.id.simpleTimePicker); // initiate a time picker
+
         simpleTimePicker.setIs24HourView(false);//false for 12 hr clock
-        // set the value for current hours
         simpleTimePicker.setHour(8); // from api level 23
-        // set the value for current minutes
         simpleTimePicker.setMinute(0); // from api level 23
-        // get hour
-        int hours = simpleTimePicker.getHour(); // after api level 23
-        //get minutes
-        int minutes = simpleTimePicker.getMinute(); // after api level 23
 
+        sTime = (TextView) findViewById(R.id.sTimeDisplay);
 
-    sDateSetListener = new DatePicker.OnDateChangedListener() {
+        sTimeDisplay(8, 0);
 
+        simpleTimePicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
 
-        //initiate a date picker
-        DatePicker simpleDatePicker = (DatePicker) findViewById(R.id.simpleDatePicker);
-
-      //  simpleDatePicker.setSpinnersShown(false);//false to not show date spinner
-        int month = simpleDatePicker.getMonth();
-        int year = simpleDatePicker.getYear();
-        int day = simpleDatePicker.getDayOfMonth();
-
-
-        @Override
-        public void onDateChanged(DatePicker view, int year, int month, int day) {
-            Log.d("Date", "Year=" + year + " Month=" + (month + 1) + " day=" + day);
-            String startDate =  month +  "/"+ day+ "/" + year;
-            sDate.setText(startDate);
-
-
-        }
-
-    };
-
-/*
-public void setDate(){
-
-            DatePicker simpleDatePicker = (DatePicker) findViewById(R.id.simpleDatePicker);
-            Calendar calendar = Calendar.getInstance();
-            calendar.setTimeInMillis(System.currentTimeMillis());
-            simpleDatePicker.init(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), new DatePicker.OnDateChangedListener() {
-
-                @Override
-                public void onDateChanged(DatePicker datePicker, int year, int month, int dayOfMonth) {
-                    Log.d("Date", "Year=" + year + " Month=" + (month + 1) + " day=" + dayOfMonth);
-
-                    String startDate = "";
-
-                }
-            });
-
-
-        }
-
-*/
-
-/*
-
-
-
-
-
-
-
-
-
-        mDisplayDate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //Calendar cal = Calendar.getInstance();
-                //int year = cal.get(Calendar.YEAR);
-                //int month = cal.get(Calendar.MONTH);
-                //int day = cal.get(Calendar.DAY_OF_MONTH);
-
-
-                DatePickerDialog dialog = new DatePickerDialog(
-                        Main2Activity.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth, mDateSetListener, year, month, day);
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                dialog.show();
-
-
+            public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
+                sTimeDisplay(hourOfDay, minute);
             }
-
         });
-        mDateSetListener = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                month = month + 1;
-                Log.d(TAG, "onDateSet: mm/dd/yyy: " + month + "/" + day + "/" + year);
 
-                String datepick = month + "/" + day + "/" + year;
-                mDisplayDate.setText(datepick);
-            }
-        };
+    }
 
-        */
+    private void sDateDisplay() {
+        sDate.setText(
+                new StringBuilder()
+                        // Month is 0 based so add 1
+                        .append(sMonth + 1).append("-")
+                        .append(sDay).append("-")
+                        .append(sYear).append(" "));
+    }
+
+
+
+
+    private void sTimeDisplay(int hourOfDay, int minute) {
+        if (hourOfDay == 0) {
+            hourOfDay += 12;
+            Clockformat = "AM";
+        } else if (hourOfDay == 12) {
+            Clockformat = "PM";
+        } else if (hourOfDay > 12) {
+            hourOfDay -= 12;
+            Clockformat = "PM";
+        } else {
+            Clockformat = "AM";
+        }
+
+        sTime.setText(
+                new StringBuilder()
+                        .append(pad(hourOfDay)).append(":")
+                        .append(pad(minute)).append(" ").append(Clockformat));
+    }
+
+    private static String pad(int c) {
+        if (c >= 10)
+            return String.valueOf(c);
+        else
+            return "0" + String.valueOf(c);
+    }
+
 
 
     }
-}

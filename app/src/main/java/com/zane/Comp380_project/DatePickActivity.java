@@ -36,11 +36,16 @@ public class DatePickActivity extends AppCompatActivity {
         DatePicker simpleDatePicker = (DatePicker) findViewById(R.id.simpleDatePicker);
         sDate = (TextView) findViewById(R.id.sDateDisplay);
 
-        sDateDisplay();
+
 
 
         Calendar calendar = Calendar.getInstance();
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        int month = calendar.get(Calendar.MONTH);
+        int year = calendar.get(Calendar.YEAR);
+
         calendar.setTimeInMillis(System.currentTimeMillis());
+        sDateDisplay();
         simpleDatePicker.init(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH), new DatePicker.OnDateChangedListener() {
             public void onDateChanged(DatePicker view, int year, int month, int dayOfMonth) {
                 Log.d("Date", "Year=" + year + " Month=" + (month + 1) + " day=" + dayOfMonth);

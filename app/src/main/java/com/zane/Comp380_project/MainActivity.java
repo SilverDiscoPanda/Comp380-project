@@ -22,10 +22,10 @@ public class MainActivity extends AppCompatActivity {
         CalendarView calendarView = findViewById(R.id.calendarView);
 
 
-        Calendar c = Calendar.getInstance();
-        int day = c.get(Calendar.DAY_OF_MONTH);
-        int month = c.get(Calendar.MONTH);
-        int year = c.get(Calendar.YEAR);
+        Calendar calendar = Calendar.getInstance();
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        int month = calendar.get(Calendar.MONTH);
+        int year = calendar.get(Calendar.YEAR);
 
 
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {

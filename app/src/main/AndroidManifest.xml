@@ -20,7 +20,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".Main2Activity" />
-        <activity android:name=".DatePickActivity"></activity>
+        <activity android:name=".DatePickActivity"
+            android:windowSoftInputMode="adjustPan"/>
     </application>
 
 </manifest>

@@ -26,10 +26,10 @@
 
     <TextView
         android:id="@+id/date"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:layout_marginBottom="81dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="384dp"
+        android:layout_height="78dp"
+        android:layout_marginBottom="103dp"
+        android:layout_marginTop="20dp"
         android:textColor="#000000"
         android:textSize="50sp"
         android:visibility="visible"
@@ -41,76 +41,102 @@
 
     <Button
         android:id="@+id/startDatebutton"
-        android:layout_width="0dp"
-        android:layout_height="47dp"
-        android:layout_marginEnd="7dp"
-        android:layout_marginStart="110dp"
+        android:layout_width="121dp"
+        android:layout_height="42dp"
+        android:layout_marginEnd="8dp"
         android:gravity="start|center_vertical"
         app:layout_constraintBaseline_toBaselineOf="@+id/startTimebutton"
-        app:layout_constraintEnd_toStartOf="@+id/startTimebutton"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/startTimebutton" />
 
 
     <Button
         android:id="@+id/startTimebutton"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="19dp"
+        android:layout_marginBottom="40dp"
         android:gravity="start|center_vertical"
-        app:layout_constraintBottom_toTopOf="@+id/endTimebutton"
+        app:layout_constraintBottom_toTopOf="@+id/EndText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/startDatebutton"
+        app:layout_constraintStart_toEndOf="@+id/StartText"
         app:layout_constraintTop_toBottomOf="@+id/date" />
 
     <Button
         android:id="@+id/endTimebutton"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="65dp"
-        android:layout_marginEnd="3dp"
+        android:layout_height="39dp"
         android:gravity="start|center_vertical"
-        app:layout_constraintBottom_toTopOf="@+id/editText"
+        app:layout_constraintBaseline_toBaselineOf="@+id/endDatebutton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/endDatebutton"
-        app:layout_constraintTop_toBottomOf="@+id/startTimebutton" />
+        app:layout_constraintStart_toEndOf="@+id/EndText" />
 
     <Button
         android:id="@+id/endDatebutton"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginEnd="7dp"
-        android:layout_marginStart="110dp"
+        android:layout_width="121dp"
+        android:layout_height="41dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="44dp"
         android:gravity="start|center_vertical"
-        app:layout_constraintBaseline_toBaselineOf="@+id/endTimebutton"
-        app:layout_constraintEnd_toStartOf="@+id/endTimebutton"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/startDatebutton"
+        app:layout_constraintVertical_bias="0.008" />
 
     <TextView
         android:id="@+id/sDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
+        android:layout_marginBottom="155dp"
+        android:layout_marginTop="1dp"
         android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/StartText"
         app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-
-
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="342dp"
+    <TextView
+        android:id="@+id/StartText"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="198dp"
-        android:layout_marginStart="64dp"
-        android:ems="10"
-        android:gravity="center_horizontal"
-        android:inputType="textMultiLine"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="325dp"
+        android:layout_marginEnd="142dp"
+        android:text="@string/Start"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/startTimebutton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/endTimebutton" />
+        app:layout_constraintTop_toBottomOf="@+id/sDate" />
 
+    <TextView
+        android:id="@+id/EndText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="248dp"
+        android:layout_marginEnd="136dp"
+        android:layout_marginStart="6dp"
+        android:text="@string/End"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/endTimebutton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/startTimebutton" />
+
+    <Button
+        android:id="@+id/savebutton"
+        android:layout_width="0dp"
+        android:layout_height="37dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="128dp"
+        android:gravity="start|center_vertical"
+        android:text="@string/Save"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/endTimebutton"
+        app:layout_constraintTop_toBottomOf="@+id/endTimebutton" />
 
 
 </android.support.constraint.ConstraintLayout>

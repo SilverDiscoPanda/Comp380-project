@@ -31,7 +31,7 @@ import java.util.Calendar;
 public class Main2Activity extends AppCompatActivity implements
 View.OnClickListener {
 
-    Button startDatebutton, endDatebutton,startTimebutton,endTimebutton;
+    Button startDatebutton, endDatebutton,startTimebutton,endTimebutton,savebutton;
     EditText sDate, txtTime;
     private TextView theDate;
     private int sYear, sMonth, sDay,eYear,eMonth,eDay, sHour, sMinute,eHour,eMinute;
@@ -52,11 +52,13 @@ View.OnClickListener {
         endDatebutton = (Button) findViewById(R.id.endDatebutton);
         startTimebutton = (Button) findViewById(R.id.startTimebutton);
         endTimebutton = (Button) findViewById(R.id.endTimebutton);
+        savebutton = (Button) findViewById(R.id.savebutton);
 
         startDatebutton.setOnClickListener(this);
         endDatebutton.setOnClickListener(this);
         startTimebutton.setOnClickListener(this);
         endTimebutton.setOnClickListener(this);
+        savebutton.setOnClickListener(this);
 
         theDate.setText(date);
         startDatebutton.setText(date);
@@ -101,25 +103,28 @@ View.OnClickListener {
             eDay = c.get(Calendar.DAY_OF_MONTH);
 
 
-            DatePickerDialog datePickerDialog = new DatePickerDialog(this,
+            final DatePickerDialog datePickerDialog = new DatePickerDialog(this,
                     new DatePickerDialog.OnDateSetListener() {
 
                         @Override
                         public void onDateSet(DatePicker view, int year,
                                               int monthOfYear, int dayOfMonth) {
+
                             endDatebutton.setText((monthOfYear + 1) + "/" + dayOfMonth + "/" + year);
                            // endDatebutton.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
 
                         }
                     }, eYear, eMonth, eDay);
+
             datePickerDialog.show();
+            ;
         }
         if (v == startTimebutton) {
 
             // Get Current Time
             final Calendar c = Calendar.getInstance();
-//            sHour = c.get(Calendar.HOUR_OF_DAY);
-  //          sMinute = c.get(Calendar.MINUTE);
+            sHour = c.get(Calendar.HOUR_OF_DAY);
+            sMinute = c.get(Calendar.MINUTE);
 
             // Launch Time Picker Dialog
             final TimePickerDialog timePickerDialog = new TimePickerDialog(this,
@@ -134,7 +139,10 @@ View.OnClickListener {
                         }
                     }, sHour, sMinute, false);
             timePickerDialog.show();
+
+
         }
+
 
         if (v == endTimebutton) {
 
@@ -143,6 +151,7 @@ View.OnClickListener {
             eHour = c.get(Calendar.HOUR_OF_DAY);
             eMinute = c.get(Calendar.MINUTE);
 
+            //android.R.style.Theme_Holo_Light_Dialog_NoActionBar,  /////after this, for digital clock
             // Launch Time Picker Dialog
             TimePickerDialog timePickerDialog = new TimePickerDialog(this,
                     new TimePickerDialog.OnTimeSetListener() {
@@ -156,9 +165,11 @@ View.OnClickListener {
                     }, eHour, eMinute, false);
             timePickerDialog.show();
         }
-
-
-
+        if (v == savebutton) {
+            Intent saveIntent = new Intent(Main2Activity.this, MainActivity.class);
+        startActivity(saveIntent);
+            Toast.makeText(getApplicationContext(), "Event Saved" , Toast.LENGTH_SHORT).show();//popup
+        }
     }
 
 
@@ -207,10 +218,6 @@ View.OnClickListener {
         else
             return "0" + String.valueOf(c);
     }
-
-
-
-
 }
 
 

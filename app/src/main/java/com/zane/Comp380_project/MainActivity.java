@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,12 +16,14 @@ import java.util.Calendar;
 public class MainActivity extends AppCompatActivity {
     private  static final String TAG = "CalendarActivity";
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        CalendarView calendarView = findViewById(R.id.calendarView);
+        final CalendarView calendarView = findViewById(R.id.calendarView);
+
+        Button todayDatebutton;
+        todayDatebutton = (Button) findViewById(R.id.todayDatebutton);
 
 
         Calendar calendar = Calendar.getInstance();
@@ -42,18 +46,24 @@ public class MainActivity extends AppCompatActivity {
                 //Goes to Main2Activity
                 Intent event = new Intent(MainActivity.this, Main2Activity.class);
                 event.putExtra("date",date);
-
-
-
-
                 startActivity(event);
-
-
 
 
             }
         });
+
+        todayDatebutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                calendarView.setDate(Calendar.getInstance().getTimeInMillis(), true, true);
+            }
+
+        });
     }
+
+
+
 }
 
 

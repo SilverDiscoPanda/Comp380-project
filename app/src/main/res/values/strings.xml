@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">My Application</string>
     <string name="startDatebutton">startDatebutton</string>
+    <string name="Today">Today</string>
+    <string name="Start">Start</string>
+    <string name="End">End</string>
+    <string name="Notes">Notes</string>
+    <string name="Save">Save</string>
 </resources>
